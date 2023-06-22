@@ -1,13 +1,14 @@
 import Header from './Header';
 import Form from './Form';
 import { useEffect, useState } from 'react';
-import List from './List';
+// import List from './List';
 // import { toBeRequired } from '@testing-library/jest-dom/matchers';
+import Table from './Table';
 function App() {
   const [reqType, setReqType] = useState('users');
 
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const API_LINK = 'https://jsonplaceholder.typicode.com'
 
 
@@ -23,7 +24,7 @@ function App() {
         }catch(err){
           console.log(err)
         }finally{
-          setIsLoading(false)
+          // setIsLoading(false)
     
         }
       }
@@ -39,13 +40,9 @@ function App() {
       <Header />
       <Form reqType={reqType} setReqType={setReqType} />
 
-      <main>
-        <List items={items} />
-      </main>
-      <section>
-        {isLoading && <p>Loading Items..</p>}
-        
-      </section>
+      <Table items={items} />
+        {/* <List items={items} /> */}
+      
         
     </div>
   );
